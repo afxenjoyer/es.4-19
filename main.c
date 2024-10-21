@@ -1,35 +1,37 @@
 #include <stdio.h>
-#include <math.h>
 #include <stdbool.h>
 
 int main()
 {
-    int i;
+    int potenzialeDivisore;
     int numeroDaVerificare;
-    int verificaPrimo = false;
+    int verificaPrimo = true;
 
     printf("Inserisci il numero da verificare\n");
     scanf("%d", &numeroDaVerificare);
 
-    if (numeroDaVerificare > 1)
+    for (potenzialeDivisore = 2; potenzialeDivisore < numeroDaVerificare; potenzialeDivisore++)
     {
-        for (i = 2; i <= sqrt(numeroDaVerificare); i++)
+        if (numeroDaVerificare % potenzialeDivisore == 0)
         {
-            if (numeroDaVerificare % i != 0)
-                verificaPrimo = true;
-            else
-                verificaPrimo = false;
+            verificaPrimo = false;
+            break;
         }
     }
-    else
+
+    if (numeroDaVerificare == 1)
     {
-        verificaPrimo = false;
+        verificaPrimo = 0;
     }
 
     if (verificaPrimo == true)
-        printf("%d è un numero primo\n", numeroDaVerificare);
+    {
+        printf("Il numero è primo\n");
+    }
     else
-        printf("%d non è un numero primo\n", numeroDaVerificare);
+    {
+        printf("Il numero non è primo\n");
+    }
 
     return 0;
 }
